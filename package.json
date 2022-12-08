@@ -1,7 +1,9 @@
 {
   "name": "monorepo-with-yarn-berry",
-  "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT",
-  "packageManager": "yarn@3.3.0"
+  "packageManager": "yarn@3.3.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ]
 }

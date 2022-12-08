@@ -15,8 +15,30 @@ yarn set version stable
 
 ## workspace 생성하기
 
-디렉토리 만들고 루트 초기화
+### 디렉토리 생성하고 루트 초기화
+
+서비스가 들어간 app폴더와 참조될 컴포넌트가 들어갈 packages/ui 만들기
+
+- apps/web
+- packages/ui/src
 
 ```
 yarn init -w
+```
+
+### 루트에서 초기화
+
+루트에서 초기화하면 패키지에 packages는 자동으로 추가된다.
+`app/*` 경로만 별도로 추가한다.
+
+```
+{
+  "name": "monorepo-with-yarn-berry",
+  "packageManager": "yarn@3.3.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ]
+}
 ```
