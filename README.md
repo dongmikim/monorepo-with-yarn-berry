@@ -69,3 +69,13 @@ apps가 아닌 루트 위치로 돌아가서 상태를 갱신한다.
 cd ..
 yarn
 ```
+
+## 타입스크립트 에러 해결
+
+`apps/web/pages/index.tsx`을 열어보면 타입스크립트 에러가 발생한다.  
+yarn berry는 모듈을 불러오는 방식이 npm과 다르기 때문이다.
+
+```
+yarn add -D typescript
+yarn dlx @yarnpkg/sdks vscode
+```
