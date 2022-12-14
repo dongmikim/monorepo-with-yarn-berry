@@ -85,6 +85,19 @@ yarn dlx @yarnpkg/sdks vscode
 typescript 버전을 4.9.4에서 **4.9.3**으로 다운하고,  
 다시 워크스페이스 타입스크립트 버전을 세팅하고 vscode를 재부팅하니 정상 작동한다.
 
+## yarn PnP 사용을 위한 vscode extension 설치
+
+`arcanis.vscode-zipfs`을 설치합니다.
+이미 추가되어 있다면 진행하지 않습니다.
+
+```
+// .vscode/extensions.json
+
+{
+  "recommendations": ["arcanis.vscode-zipfs"]
+}
+```
+
 ## 공통 패키지 생성
 
 ```
@@ -95,3 +108,53 @@ yarn add -D typescript
 ```
 
 위에서 했던 것처럼 package.json에서 name을 수정
+
+```
+{
+  "name": "@dongmikim/lib",
+  "version": "1.0.0",
+  "private": true,
+  "main": "./src/index.ts",
+  "dependencies": {
+    "typescript": "^4.9.3"
+  }
+}
+```
+
+`packages/ui/tsconfig.json` 파일 생성 후 설정값 넣기
+
+```
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    "strict": true,
+    "useUnknownInCatchVariables": true,
+    "allowJs": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "newLine": "lf",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "target": "ESNext",
+    "lib": ["ESNext", "dom"],
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "./src",
+    "noEmit": false,
+    "incremental": true,
+    "resolveJsonModule": true,
+    "paths": {}
+  },
+  "exclude": ["**/node_modules", "**/.*/", "./dist", "./coverage"],
+  "include": ["**/*.ts", "**/*.js", "**/.cjs", "**/*.mjs", "**/*.json"]
+}
+```
+
+## apps/web에서 packages/ui 의존해보기
+
+```
+pwd // 루트가 맞나 확인
+
+yarn workspace @dongmikim/web add @dongmikim/ui
+```
