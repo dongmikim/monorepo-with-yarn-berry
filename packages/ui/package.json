@@ -1,6 +1,7 @@
 {
   "name": "@dongmikim/ui",
   "packageManager": "yarn@3.3.0",
+  "main": "src/index.ts",
   "dependencies": {
     "typescript": "^4.9.4"
   }
