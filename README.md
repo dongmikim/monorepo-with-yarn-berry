@@ -79,3 +79,19 @@ yarn berry는 모듈을 불러오는 방식이 npm과 다르기 때문이다.
 yarn add -D typescript
 yarn dlx @yarnpkg/sdks vscode
 ```
+
+### 그래도 해결되지 않는 타입스크립트 에러
+
+typescript 버전을 4.9.4에서 **4.9.3**으로 다운하고,  
+다시 워크스페이스 타입스크립트 버전을 세팅하고 vscode를 재부팅하니 정상 작동한다.
+
+## 공통 패키지 생성
+
+```
+cd packages/ui
+
+yarn init
+yarn add -D typescript
+```
+
+위에서 했던 것처럼 package.json에서 name을 수정
